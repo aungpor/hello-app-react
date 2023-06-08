@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
-function App() {
+export default function App() {
+
+  const [value, setValue] = useState("Aungpor World");
+  const aungpor = {greeting: ["aungpor1","aowtangkeii"],  goodbye:["ryu"]}
+
+  useEffect(() => {
+    setValue(value);
+  }, [value]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text" value={value} onChange={(e) => setValue(e.target.value)} />
+      <h1 style={{ color: "red" }}>{value}</h1>
+      <p>{aungpor.greeting[0]}</p>
     </div>
+
   );
 }
 
-export default App;
+
