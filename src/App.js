@@ -5,6 +5,7 @@ import MyDropdown from './MyDropdown'
 import backgroundImage from "./childComponent/background.png";
 import MyCard from "./childComponent/Card";
 import MyDescription from "./childComponent/MyDescription";
+import MyTable from './MyTable';
 
 export default function App() {
 
@@ -39,7 +40,7 @@ export default function App() {
       <MyDropdown objects = {shopData} />
       {/* <MyDescription text={text} ifTest={ifTest} /> */}
       <MyCard />
-      
+      <MyTable/>
     </Wrapper>
     
   );
