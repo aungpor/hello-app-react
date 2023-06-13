@@ -1,11 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Example from './StateHook'
-import Prop from './Prop'
 import App from './App'
-import PropTwo from './PropTwo';
-import Promise from './Promise'
 import reportWebVitals from './reportWebVitals';
 
 import Hotjar from '@hotjar/browser';
