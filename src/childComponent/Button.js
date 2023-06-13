@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { Button } from 'antd';
 
 const MyButton = () => {
-  return <Button>Click me!</Button>;
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if(count === 0){
+        document.title = `plase click me`;
+    }else{
+        document.title = `You clicked ${count} times`;
+    }
+    
+});
+
+  return(
+    <Wrapper>
+      <Button onClick={() => setCount(count + 1)}>Click me!</Button>
+      <p>You clicked {count} times</p>
+      </Wrapper>
+  ) 
 };
 
 export default MyButton;
+
+const Wrapper = styled.div`
+  justify-items: center;
 
 // const Button = styled.button`
 //   padding: 12px 0;
