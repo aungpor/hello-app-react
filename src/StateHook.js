@@ -14,6 +14,7 @@ function Example() {
     const [count, setCount] = useState(0);
     const [message, setMessage] = useState('Hi there, How are you?');
     const [dateTime, setDateTime] = useState(new Date());
+    const [arrayTest, setArrayTest] = useState([])
 
     useEffect(() => {
         if(count === 0){
@@ -33,6 +34,7 @@ function Example() {
 
     useEffect(() => {
         test()
+        testTwo()
     },[])
 
     const test = () => {
@@ -42,6 +44,12 @@ function Example() {
         setTimeout(() => {
             setMessage("I'm fine ,thanks for asking.")
         }, 1000)
+    }
+
+    const testTwo = () => {
+        const dataArray = ["one", "two"]
+        setArrayTest(prevState => [...prevState, ...dataArray])
+        console.log(arrayTest)
     }
 
     return (
@@ -54,6 +62,11 @@ function Example() {
             <ul>{items.map(item => <li key={item.id}>id {item.id} = {item.name}</li> )}</ul>
             <h4>{`${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`}</h4>
             <h4>{dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()}</h4>
+
+            <button onClick={testTwo}>
+                Test array
+            </button>
+            <h1>{arrayTest}</h1>
         </div>
     );
 

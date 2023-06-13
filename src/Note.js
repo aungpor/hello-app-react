@@ -76,10 +76,10 @@ function Note() {
       {/* <label>Name: <input /></label>
       {error ? <div style={{color: 'red'}}>Name invalid</div> : null} */}
 
-      {/* Grocery List:
+      Grocery List:
       <ul>
         {items.map(item => <li>{item}</li>)}
-      </ul> */}
+      </ul>
 
       <FunctionComponent />
       <ClassComponent />
