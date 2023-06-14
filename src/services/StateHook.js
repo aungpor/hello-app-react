@@ -63,10 +63,10 @@ function Example() {
             <h4>{`${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`}</h4>
             <h4>{dateTime.toLocaleDateString()} {dateTime.toLocaleTimeString()}</h4>
 
-            <button onClick={testTwo}>
+            {/* <button onClick={testTwo}>
                 Test array
             </button>
-            <h1>{arrayTest}</h1>
+            <h1>{arrayTest}</h1> */}
         </div>
     );
 

@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import SecondPage from "./SecondPage";
+import ThirdPage from './ThirdPage'
 
 const Layout = () => {
   return (
@@ -11,6 +12,9 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/SecondPage">SecondPage</Link>
+          </li>
+          <li>
+            <Link to="/ThirdPage">ThirdPage</Link>
           </li>
         </ul>
       </nav>

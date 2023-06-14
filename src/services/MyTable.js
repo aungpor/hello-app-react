@@ -8,12 +8,14 @@ const columns = [
   {
     title: 'Age',
     dataIndex: 'age',
+    sorter: (a, b) => a.age - b.age,
   },
   {
     title: 'Address',
     dataIndex: 'address',
   },
 ];
+
 const data = [];
 for (let i = 0; i < 46; i++) {
   data.push({
