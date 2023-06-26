@@ -1,92 +1,67 @@
-import { Button, Table } from 'antd';
-import qs from 'qs';
+import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { Outlet, Link } from "react-router-dom";
-import MyTable from './MyTable';
 const columns = [
   {
     title: 'Name',
     dataIndex: 'name',
-    sorter: true,
-    render: (name) => `${name.first} ${name.last}`,
-    width: '20%',
-  },
-  {
-    title: 'Gender',
-    dataIndex: 'gender',
     filters: [
       {
-        text: 'Male',
-        value: 'male',
+        text: 'cafe',
+        value: 'cafe',
       },
       {
-        text: 'Female',
-        value: 'female',
-      },
+        text: 'ข้าว',
+        value: 'ข้าว',
+      }
     ],
-    width: '20%',
+    filterMode: 'tree',
+    filterSearch: true,
+    onFilter: (value, record) => record.name.startsWith(value),
+    width: '50%',
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
+    title: 'Age',
+    dataIndex: 'age',
+    sorter: (a, b) => a.age - b.age,
   },
-  {
-    title: 'Test',
-    render: () => <Button><Link to="/">FirstPage</Link> </Button>
-  }
 ];
-const getRandomuserParams = (params) => ({
-  results: params.pagination?.pageSize,
-  page: params.pagination?.current,
-  ...params,
-});
-const MyTableTwo = () => {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
-  const [tableParams, setTableParams] = useState({
-    pagination: {
-      current: 1,
-      pageSize: 10,
-    },
-  });
-  const fetchData = () => {
-    setLoading(true);
-    fetch(`https://randomuser.me/api?${qs.stringify(getRandomuserParams(tableParams))}`)
-      .then((res) => res.json())
-      .then(({ results }) => {
-        setData(results);
-        setLoading(false);
-        setTableParams({
-          ...tableParams,
-          pagination: {
-            ...tableParams.pagination,
-            total: 200,
-            // 200 is mock data, you should read it from server
-            // total: data.totalCount,
-          },
-        });
-      });
-  };
 
-  useEffect(() => {
-    fetchData();
-  }, [JSON.stringify(tableParams)]);
-  const handleTableChange = (pagination, filters, sorter) => {
-    setTableParams({
-      pagination,
-      filters,
-      ...sorter,
-    });
-  };
-  return (
-    <Table
-      columns={columns}
-      rowKey={(record) => record.login.uuid}
-      dataSource={data}
-      pagination={tableParams.pagination}
-      loading={loading}
-      onChange={handleTableChange}
-    />
-  );
-};
+
+const MyTableTwo = ({objects}) =>{
+    const [tableParams, setTableParams] = useState({
+        pagination: {
+            current: 1,
+            pageSize: 5
+          },
+    })
+    const setShopObjectToArray = (shop) => {
+        return {
+          key: shop?.tag_id,
+          age: shop?.tag_id,
+          name: shop?.tag_name
+        }
+      }
+    
+      const shopArray = [];
+      const shops = objects;
+      shops.map((item) => {
+        const shopObject = setShopObjectToArray(item);
+        shopArray.push(shopObject);
+      })
+      console.log(shopArray)
+
+      const onChange = (pagination, filters, sorter) => {
+        setTableParams({pagination, filters, sorter})
+        console.log('params', pagination, filters, sorter);
+      };
+
+    return(
+        <Table 
+        columns={columns} 
+        dataSource={shopArray} 
+        pagination={tableParams.pagination}
+        onChange={onChange} />
+    )
+    
+} 
 export default MyTableTwo;

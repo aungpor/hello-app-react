@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import Hotjar from '@hotjar/browser';
 import { hotjar } from 'react-hotjar';
 
-const siteId = 3531612;
+const siteId = 3548727;
 const hotjarVersion = 6;
 
 Hotjar.init(siteId, hotjarVersion);

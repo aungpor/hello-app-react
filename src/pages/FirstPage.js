@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import GetAllData from '../services/Api'
 import MyDropdown from '../services/MyDropdown'
-import backgroundImage from "../assets/background.png";
+import backgroundImage from "../assets/images/background.png";
 import MyCard from "../services/childComponent/Card";
 import MyDescription from "../services/childComponent/MyDescription";
 import MyTable from '../services/MyTable';
